@@ -2,11 +2,7 @@
 const navbar = document.getElementById('navbar');
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
 });
 
 // Simple Animation for Reveal on Scroll (optional enhancement)
@@ -23,7 +19,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.value-card, .product-card').forEach(el => {
+document.querySelectorAll('.value-card, .feature-card, .product-card-v2, .highlight-card, .trust-item, .hero-copy').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'all 0.6s ease-out';

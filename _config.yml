@@ -1,13 +1,13 @@
 # 網站基本設定
-title: Xilverism 商店
-subtitle: Xilverism Shop
+title: 明日商店
+subtitle: Ashita Store
 description: 這裡提供高品質、獨特的商品，讓你的生活更美好。
 keywords:
 author: silverkuo
 language: zh-TW
 timezone: Asia/Taipei
 
-url: https://xilverism.github.io/
+url: https://ashitastore.github.io/
 root: /root/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
