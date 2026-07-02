@@ -2,17 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
 
 :root {
-    --primary: #064e3b; /* Deep Emerald */
-    --primary-light: #065f46;
-    --secondary: #d97706; /* Gold */
-    --accent: #f59e0b;
-    --text-dark: #1f2937;
-    --text-light: #6b7280;
+    --primary: #2b2724; /* Sophisticated Deep Bronze / Charcoal Brown */
+    --primary-light: #443e39; /* Soft Bronze Gray */
+    --secondary: #c5a880; /* Elegant Champagne Gold */
+    --accent: #e2c599; /* Bright warm Gold */
+    --text-dark: #221f1d; /* Elegant deep brown-black */
+    --text-light: #706a64; /* Sophisticated muted taupe */
     --white: #ffffff;
-    --bg-light: #f9fafb;
-    --glass: rgba(255, 255, 255, 0.8);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --bg-light: #faf8f5; /* Warm cream/ivory background - bright & luxurious */
+    --glass: rgba(255, 255, 255, 0.9);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
 }
 
 * {
@@ -190,7 +190,7 @@ nav.scrolled {
 /* --- Hero --- */
 .hero {
     min-height: 100vh;
-    background: linear-gradient(180deg, rgba(6, 78, 59, 0.65), rgba(6, 78, 59, 0.75)), url('assets/images/hero.png');
+    background: linear-gradient(180deg, rgba(43, 39, 36, 0.4), rgba(18, 17, 16, 0.7)), url('assets/images/hero.png');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -311,7 +311,7 @@ nav.scrolled {
     border-radius: 22px;
     display: grid;
     place-items: center;
-    background: rgba(217,119,6,0.12);
+    background: rgba(197, 168, 128, 0.15);
     color: var(--secondary);
     font-size: 1.75rem;
 }
@@ -385,15 +385,106 @@ nav.scrolled {
     border-radius: 999px;
     background: var(--secondary);
     color: var(--white);
+    font-weight: 600;
+    transition: var(--transition);
 }
 
 .btn-sm-store:hover {
-    background: #b45309;
+    background: #b3966f;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(197, 168, 128, 0.3);
+}
+
+/* --- Individual Product Cards --- */
+.product-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.item-card {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.item-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.08);
+    border-color: var(--secondary);
+}
+
+.item-card-img-wrap {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+}
+
+.item-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.item-card:hover img {
+    transform: scale(1.06);
+}
+
+.item-card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.item-card-title {
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.item-card-text {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 4.8em;
+}
+
+.item-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: 15px;
+    margin-top: auto;
+}
+
+.item-card-price {
+    font-weight: 700;
+    color: var(--secondary);
+    font-size: 1.2rem;
 }
 
 /* --- Trust Banner --- */
 .trust-banner {
-    background: rgba(6, 78, 59, 0.06);
+    background: rgba(197, 168, 128, 0.08);
     padding: 50px 0;
 }
 
@@ -422,7 +513,7 @@ nav.scrolled {
 
 /* --- CTA Strip --- */
 .cta-strip {
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    background: linear-gradient(135deg, var(--secondary), #b3966f);
     color: var(--white);
     padding: 60px 0;
 }
@@ -446,8 +537,8 @@ nav.scrolled {
 
 /* --- Footer --- */
 footer {
-    background: var(--primary);
-    color: var(--white);
+    background: #f0ede6; /* Elegant light cream beige */
+    color: var(--text-dark);
     padding: 80px 0 30px;
 }
 
@@ -462,6 +553,7 @@ footer {
     margin-bottom: 25px;
     font-size: 1.2rem;
     position: relative;
+    color: var(--text-dark);
 }
 
 .footer-col h4::after {
@@ -476,7 +568,7 @@ footer {
 
 .footer-col p, .footer-col li {
     margin-bottom: 12px;
-    color: #d1d5db;
+    color: var(--text-light);
 }
 
 .footer-col a:hover {
@@ -491,18 +583,18 @@ footer {
 }
 
 .social-links a {
-    color: #d1d5db;
+    color: var(--text-light);
 }
 
 .social-links a:hover {
-    color: var(--white);
+    color: var(--secondary);
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: #9ca3af;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    color: var(--text-light);
 }
 
 /* --- Animations --- */
