@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 商品名稱 -->
+    <title>【商品名稱】 | Ashita Store 跨境健康生活選品</title>
+    <!-- 商品 SEO 描述 -->
+    <meta name="description" content="【請填寫商品的簡短行銷描述，例如：嚴選天然原料、專業把關，為您帶來極致的健康享受。】">
+    <!-- 引入全域樣式（路徑指向根目錄的 styles.css） -->
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 商品頁面專用樣式 */
+        .product-detail-hero {
+            padding: 140px 0 80px 0;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+        }
+        .product-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .product-gallery {
+            position: relative;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .product-gallery img {
+            border-radius: 16px;
+            width: 100%;
+            object-fit: cover;
+            aspect-ratio: 1/1;
+        }
+        .product-meta-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .product-tag {
+            align-self: flex-start;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .product-meta-info h1 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+        .product-highlights-list {
+            margin: 20px 0;
+            padding-left: 20px;
+            display: grid;
+            gap: 12px;
+        }
+        .product-highlights-list li {
+            list-style: none;
+            position: relative;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        .product-highlights-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: -25px;
+            color: var(--secondary);
+        }
+        .buy-cta-container {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .btn-shopee {
+            background: #ff5722; /* 蝦皮橘色 */
+            color: var(--white);
+            font-size: 1.15rem;
+            padding: 16px 36px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 20px rgba(255, 87, 34, 0.25);
+        }
+        .btn-shopee:hover {
+            background: #f4511e;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(255, 87, 34, 0.35);
+        }
+        
+        /* 內容詳情排版 */
+        .content-section {
+            padding: 80px 0;
+        }
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .detail-grid.reverse {
+            grid-template-columns: 1fr 1.2fr;
+        }
+        .detail-text h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .detail-text p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+        .spec-table th, .spec-table td {
+            padding: 14px 20px;
+            text-align: left;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .spec-table th {
+            background-color: #f9fafb;
+            color: var(--primary);
+            font-weight: 600;
+            width: 30%;
+        }
+        .spec-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* 響應式排版 */
+        @media (max-width: 991px) {
+            .product-hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .product-tag {
+                align-self: center;
+            }
+            .product-highlights-list {
+                justify-content: center;
+                display: inline-flex;
+                flex-direction: column;
+                text-align: left;
+            }
+            .buy-cta-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            .detail-grid, .detail-grid.reverse {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .detail-grid.reverse .about-image {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 頂部導覽列（路徑指向根目錄的 index.html 等） -->
+    <nav id="navbar" class="scrolled">
+        <div class="container nav-container">
+            <a href="../../index.html" class="logo">Ashita <span>Store</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="切換選單">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../../index.html">首頁</a></li>
+                <li><a href="../../about.html">關於我們</a></li>
+                <li><a href="../../quality.html">品質認證</a></li>
+                <li><a href="../../products.html">產品中心</a></li>
+                <li><a href="../../global.html">全球佈局</a></li>
+                <li><a href="../../contact.html">聯絡我們</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- 商品主視覺與購買按鈕 -->
+        <section class="product-detail-hero">
+            <div class="container product-hero-grid">
+                <!-- 商品主圖 -->
+                <div class="product-gallery">
+                    <!-- 使用該商品資料夾下的圖片，未來替換成該資料夾內真實檔名 -->
+                    <img src="cover.jpg" alt="【商品名稱】">
+                </div>
+                <!-- 商品基本規格與購買 CTA -->
+                <div class="product-meta-info">
+                    <span class="product-tag">【商品分類，例如：天然食品系列】</span>
+                    <h1>【請輸入商品有名、響亮的行銷名稱】</h1>
+                    <p class="product-price">【預估市售價，例如：NT$ 350 - NT$ 980】</p>
+                    <p style="font-size: 1.1rem; color: var(--text-light);">
+                        【商品的一句話核心價值描述。例如：嚴選自優質無污染農場，採用專業製程保留最完整營養，為您開啟全家人的每日活力。】
+                    </p>
+                    
+                    <ul class="product-highlights-list">
+                        <li>【特色 1：例如 100% 有機無添加，純淨健康】</li>
+                        <li>【特色 2：例如 通過 HACCP 與第三方檢測合規】</li>
+                        <li>// 方便複製：若有更多特色可在此直接複製新增一行 &lt;li&gt;</li>
+                    </ul>
+                    
+                    <div class="buy-cta-container">
+                        <!-- 💡 蝦皮商城或電商賣場的直達連結，請修改 href -->
+                        <a href="https://shopee.tw/您的賣場連結" target="_blank" class="btn btn-shopee">
+                            <i class="fas fa-shopping-bag"></i> 直達蝦皮商城購買
+                        </a>
+                        <a href="../../products.html" class="btn btn-outline">
+                            返回產品中心
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 行銷特色介紹 1 -->
+        <section class="content-section" style="background: var(--white);">
+            <div class="container detail-grid">
+                <div class="detail-text">
+                    <h2>從源頭把關的嚴格品質</h2>
+                    <p>【這裡是行銷文案區 1。您可以詳細描述產品的來源、生產過程或研發理念。例如：我們親自走訪世界各地的契作農場，只選用在肥沃土壤中自然成熟的原料，拒絕人工催熟與化學肥料。】</p>
+                    <p>【第二段描述。為消費者建立信任感：每一批原料在進口前皆經過精密儀器檢測，確保無重金屬與農藥殘留，讓您與家人吃得安心。】</p>
+                </div>
+                <!-- 特色配圖 -->
+                <div class="about-image">
+                    <!-- 可以直接放此資料夾內圖片，若無圖片可放 placeholder 或刪除 -->
+                    <img src="cover.jpg" alt="源頭把關" style="border-radius: 20px; box-shadow: var(--shadow);">
+                </div>
+            </div>
+        </section>
+
+        <!-- 行銷特色介紹 2 (圖片在左，文字在右) -->
+        <section class="content-section" style="background: var(--bg-light);">
+            <div class="container detail-grid reverse">
+                <div class="about-image">
+                    <img src="cover.jpg" alt="產品細節" style="border-radius: 20px; box-shadow: var(--shadow);">
+                </div>
+                <div class="detail-text">
+                    <h2>獨家製程鎖住天然美味</h2>
+                    <p>【這裡是行銷文案區 2。您可以描述商品的食用方式、特色製程或感受。例如：我們採用領先的低溫慢火烘焙技術，避開高溫油炸所產生的有害物質，完美鎖住堅果的天然油脂香氣與爽脆口感。】</p>
+                    <p>【產品多功能性說明。無論是做為上班族的活力下午茶，還是銀髮族的每日營養補給，這款商品都是最完美的百搭選擇。】</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 商品規格參數 -->
+        <section class="content-section" style="background: var(--white);">
+            <div class="container">
+                <div class="section-title">
+                    <h2>商品規格與安全認證</h2>
+                    <p>透明的資訊，是我們對您最誠實的承諾。</p>
+                </div>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <table class="spec-table">
+                        <tr>
+                            <th>品名</th>
+                            <td>【商品名稱，如：有機認證每日綜合堅果】</td>
+                        </tr>
+                        <tr>
+                            <th>成分</th>
+                            <td>【如：有機核桃、有機腰果、有機南瓜子、有機杏仁】</td>
+                        </tr>
+                        <tr>
+                            <th>淨重</th>
+                            <td>【如：250公克/包】</td>
+                        </tr>
+                        <tr>
+                            <th>產地</th>
+                            <td>【如：台灣分裝 (原料進口自美國、越南)】</td>
+                        </tr>
+                        <tr>
+                            <th>保存期限</th>
+                            <td>【如：密封12個月，拆封後請儘速食用或冷藏】</td>
+                        </tr>
+                        <tr>
+                            <th>檢驗證書</th>
+                            <td>【如：通過SGS無農藥殘留檢測、符合ISO22000認證廠分裝】</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部呼籲購買 Banner -->
+        <section class="cta-strip">
+            <div class="container cta-inner">
+                <div>
+                    <h2>【想開啟健康生活了嗎？】</h2>
+                    <p>【現在點擊下方按鈕，直達官方授權賣場，享有專屬折扣與迅速配送服務。】</p>
+                </div>
+                <!-- 💡 蝦皮商城或電商賣場的直達連結，請修改 href -->
+                <a href="https://shopee.tw/您的賣場連結" target="_blank" class="btn btn-primary" style="background: #ff5722; border: none;">
+                    <i class="fas fa-shopping-bag"></i> 立即下單購買
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁尾（路徑與根目錄一致） -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>關於 Ashita Store</h4>
+                    <p>Ashita Store 透過透明的產品資訊與嚴格的品質控管，結合便利的第三方電商平台，為全球消費者提供最安心的購物管道。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速連結</h4>
+                    <ul>
+                        <li><a href="../../about.html">品牌故事</a></li>
+                        <li><a href="../../quality.html">品質承諾</a></li>
+                        <li><a href="../../products.html">產品目錄</a></li>
+                        <li><a href="../../global.html">全球服務點</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>聯絡與諮詢</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 0800-000-893</li>
+                        <li><i class="fas fa-envelope"></i>&nbsp;service@ashitastore.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 台灣台北市士林區</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>官方賣場與社群</h4>
+                    <div class="social-links">
+                        <a href="https://shopee.tw/您的賣場網址" target="_blank" title="蝦皮賣場"><i class="fas fa-store"></i></a>
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ashita Store Co., Ltd. 版權所有</p>
+                <p>食品業者登錄字號：F-278965031-00000-3</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Pinegrow Web Editor metadata & backups
+_pgbackup/
+_pginfo/
+pinegrow.json
